@@ -1,0 +1,57 @@
+--- a/classes/andes/oplus/documentsreader/core/fileoperate/copy/m.smali
++++ b/classes/andes/oplus/documentsreader/core/fileoperate/copy/m.smali
+@@ -20,47 +20,13 @@
+ 
+ # direct methods
+ .method public static a(Landroid/os/storage/StorageVolume;)I
+-    .registers 2
+-    .param p0    # Landroid/os/storage/StorageVolume;
+-        .annotation build Lorg/jetbrains/annotations/NotNull;
+-        .end annotation
+-    .end param
+-
+-    .line 1
+-    new-instance v0, Lcom/oplus/os/storage/OplusStorageVolume;
+-
+-    .line 2
+-    .line 3
+-    invoke-direct {v0, p0}, Lcom/oplus/os/storage/OplusStorageVolume;-><init>(Landroid/os/storage/StorageVolume;)V
+-
+-    .line 4
+-    .line 5
+-    .line 6
+-    invoke-virtual {v0}, Lcom/oplus/os/storage/OplusStorageVolume;->getOplusReadOnlyType()I
+-
+-    .line 7
+-    .line 8
+-    .line 9
+-    move-result p0
+-
+-    .line 10
+-    return p0
+-    .line 11
+-    .line 12
+-    .line 13
+-    .line 14
+-    .line 15
+-    .line 16
+-    .line 17
+-    .line 18
+-    .line 19
+-    .line 20
+-    .line 21
+-    .line 22
+-    .line 23
+-    .line 24
+-    .line 25
+-    .line 26
++    .locals 1
++    invoke-virtual {p0}, Landroid/os/storage/StorageVolume;->getState()Ljava/lang/String;
++    move-result-object p0
++    const-string v0, "mounted_ro"
++    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++    move-result v0
++    return v0
+ .end method
+ 
+ .method public static b(Ljava/io/File;)J

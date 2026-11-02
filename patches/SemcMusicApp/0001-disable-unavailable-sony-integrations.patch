@@ -1,0 +1,260 @@
+--- a/classes2/com/sonyericsson/music/common/ApiAvailabilityManager.smali
++++ b/classes2/com/sonyericsson/music/common/ApiAvailabilityManager.smali
+@@ -74,31 +74,7 @@
+ .end method
+ 
+ .method public static isApiAvailable(Lcom/sonyericsson/music/common/ApiAvailabilityManager$Api;)Z
+-    .registers 2
+-
+-    .line 146
+-    sget-object v0, Lcom/sonyericsson/music/common/ApiAvailabilityManager;->sApis:Ljava/util/Map;
+-
+-    invoke-interface {v0, p0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+-
+-    move-result-object v0
+-
+-    check-cast v0, Ljava/lang/Boolean;
+-
+-    if-nez v0, :cond_f
+-
+-    .line 149
+-    invoke-static {p0}, Lcom/sonyericsson/music/common/ApiAvailabilityManager;->doLookup(Lcom/sonyericsson/music/common/ApiAvailabilityManager$Api;)Z
+-
+-    move-result p0
+-
+-    return p0
+-
+-    .line 151
+-    :cond_f
+-    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+-
+-    move-result p0
+-
+-    return p0
++    .locals 1
++    const/4 v0, 0x0
++    return v0
+ .end method
+--- a/classes2/com/sonyericsson/music/common/MediaRouterUtils.smali
++++ b/classes2/com/sonyericsson/music/common/MediaRouterUtils.smali
+@@ -340,53 +340,9 @@
+ .end method
+ 
+ .method private static isDlnaSupported(Landroid/content/Context;)Z
+-    .registers 3
+-
+-    .line 37
+-    sget-object v0, Lcom/sonyericsson/music/common/MediaRouterUtils;->sIsDlnaSupported:Ljava/lang/Boolean;
+-
+-    if-nez v0, :cond_1e
+-
+-    .line 38
+-    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+-
+-    move-result-object p0
+-
+-    const-string v0, "com.sonymobile.dlna.provider.dmr"
+-
+-    const/4 v1, 0x0
+-
+-    invoke-virtual {p0, v0, v1}, Landroid/content/pm/PackageManager;->resolveContentProvider(Ljava/lang/String;I)Landroid/content/pm/ProviderInfo;
+-
+-    move-result-object p0
+-
+-    if-eqz p0, :cond_18
+-
+-    .line 41
+-    invoke-virtual {p0}, Landroid/content/pm/ComponentInfo;->isEnabled()Z
+-
+-    move-result p0
+-
+-    if-eqz p0, :cond_18
+-
+-    const/4 v1, 0x1
+-
+-    :cond_18
+-    invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+-
+-    move-result-object p0
+-
+-    sput-object p0, Lcom/sonyericsson/music/common/MediaRouterUtils;->sIsDlnaSupported:Ljava/lang/Boolean;
+-
+-    .line 44
+-    :cond_1e
+-    sget-object p0, Lcom/sonyericsson/music/common/MediaRouterUtils;->sIsDlnaSupported:Ljava/lang/Boolean;
+-
+-    invoke-virtual {p0}, Ljava/lang/Boolean;->booleanValue()Z
+-
+-    move-result p0
+-
+-    return p0
++    .locals 1
++    const/4 v0, 0x0
++    return v0
+ .end method
+ 
+ .method public static isGoogleCast(Landroidx/mediarouter/media/MediaRouter$RouteInfo;)Z
+--- a/classes2/com/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompat.smali
++++ b/classes2/com/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompat.smali
+@@ -17,155 +17,13 @@
+ 
+ # direct methods
+ .method public static getFactory(Landroid/content/Context;)Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompat$Factory;
+-    .registers 2
+-
+-    .line 74
+-    new-instance v0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$AvailabilityImpl;
+-
+-    invoke-direct {v0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$AvailabilityImpl;-><init>()V
+-
+-    invoke-virtual {v0, p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$AvailabilityImpl;->isAvailable(Landroid/content/Context;)Z
+-
+-    move-result v0
+-
+-    if-eqz v0, :cond_11
+-
+-    .line 75
+-    new-instance p0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$FactoryImpl;
+-
+-    invoke-direct {p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$FactoryImpl;-><init>()V
+-
+-    return-object p0
+-
+-    .line 76
+-    :cond_11
+-    new-instance v0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$AvailabilityImpl;
+-
+-    invoke-direct {v0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$AvailabilityImpl;-><init>()V
+-
+-    invoke-virtual {v0, p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$AvailabilityImpl;->isAvailable(Landroid/content/Context;)Z
+-
+-    move-result v0
+-
+-    if-eqz v0, :cond_22
+-
+-    .line 77
+-    new-instance p0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$FactoryImpl;
+-
+-    invoke-direct {p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$FactoryImpl;-><init>()V
+-
+-    return-object p0
+-
+-    .line 78
+-    :cond_22
+-    new-instance v0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$AvailabilityImpl;
+-
+-    invoke-direct {v0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$AvailabilityImpl;-><init>()V
+-
+-    invoke-virtual {v0, p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$AvailabilityImpl;->isAvailable(Landroid/content/Context;)Z
+-
+-    move-result p0
+-
+-    if-eqz p0, :cond_33
+-
+-    .line 79
+-    new-instance p0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$FactoryImpl;
+-
+-    invoke-direct {p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$FactoryImpl;-><init>()V
+-
+-    return-object p0
+-
+-    :cond_33
+-    const/4 p0, 0x0
+-
+-    return-object p0
++    .locals 1
++    const/4 v0, 0x0
++    return-object v0
+ .end method
+ 
+ .method public static getFactory(Landroid/content/Context;I)Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompat$Factory;
+-    .registers 3
+-
+-    const/4 v0, 0x1
+-
+-    if-ne v0, p1, :cond_14
+-
+-    .line 89
+-    new-instance p1, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatPlayAnywhere$AvailabilityImpl;
+-
+-    invoke-direct {p1}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatPlayAnywhere$AvailabilityImpl;-><init>()V
+-
+-    .line 90
+-    invoke-virtual {p1, p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatPlayAnywhere$AvailabilityImpl;->isAvailable(Landroid/content/Context;)Z
+-
+-    move-result p1
+-
+-    if-eqz p1, :cond_14
+-
+-    .line 91
+-    new-instance p0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatPlayAnywhere$FactoryImpl;
+-
+-    invoke-direct {p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatPlayAnywhere$FactoryImpl;-><init>()V
+-
+-    return-object p0
+-
+-    .line 92
+-    :cond_14
+-    new-instance p1, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$AvailabilityImpl;
+-
+-    invoke-direct {p1}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$AvailabilityImpl;-><init>()V
+-
+-    invoke-virtual {p1, p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$AvailabilityImpl;->isAvailable(Landroid/content/Context;)Z
+-
+-    move-result p1
+-
+-    if-eqz p1, :cond_25
+-
+-    .line 93
+-    new-instance p0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$FactoryImpl;
+-
+-    invoke-direct {p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV6$FactoryImpl;-><init>()V
+-
+-    return-object p0
+-
+-    .line 94
+-    :cond_25
+-    new-instance p1, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$AvailabilityImpl;
+-
+-    invoke-direct {p1}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$AvailabilityImpl;-><init>()V
+-
+-    invoke-virtual {p1, p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$AvailabilityImpl;->isAvailable(Landroid/content/Context;)Z
+-
+-    move-result p1
+-
+-    if-eqz p1, :cond_36
+-
+-    .line 95
+-    new-instance p0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$FactoryImpl;
+-
+-    invoke-direct {p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV5$FactoryImpl;-><init>()V
+-
+-    return-object p0
+-
+-    .line 96
+-    :cond_36
+-    new-instance p1, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$AvailabilityImpl;
+-
+-    invoke-direct {p1}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$AvailabilityImpl;-><init>()V
+-
+-    invoke-virtual {p1, p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$AvailabilityImpl;->isAvailable(Landroid/content/Context;)Z
+-
+-    move-result p0
+-
+-    if-eqz p0, :cond_47
+-
+-    .line 97
+-    new-instance p0, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$FactoryImpl;
+-
+-    invoke-direct {p0}, Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompatV1$FactoryImpl;-><init>()V
+-
+-    return-object p0
+-
+-    :cond_47
+-    const/4 p0, 0x0
+-
+-    return-object p0
++    .locals 1
++    const/4 v0, 0x0
++    return-object v0
+ .end method

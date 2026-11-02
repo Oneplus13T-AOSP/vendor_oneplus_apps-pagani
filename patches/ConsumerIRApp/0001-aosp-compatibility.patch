@@ -1,0 +1,164 @@
+--- a/classes/a3/b.smali
++++ b/classes/a3/b.smali
+@@ -14,7 +14,7 @@
+     .registers 1
+ 
+     :try_start_0
+-    const-string v0, "com.oplus.os.OplusBuild"
++    const-string v0, "org.pixelos.pagani.compat.OplusBuild"
+ 
+     invoke-static {v0}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+     :try_end_5
+@@ -87,7 +87,7 @@
+ 
+     if-eqz v0, :cond_9
+ 
+-    const-string v0, "com.oplus.os.OplusBuild"
++    const-string v0, "org.pixelos.pagani.compat.OplusBuild"
+ 
+     goto :goto_11
+ 
+@@ -130,7 +130,7 @@
+ 
+     invoke-static {v0}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+ 
+-    sget v0, Lcom/oplus/os/OplusBuild$VERSION;->SDK_VERSION:I
++    sget v0, Lorg/pixelos/pagani/compat/OplusBuild$VERSION;->SDK_VERSION:I
+     :try_end_2d
+     .catchall {:try_start_26 .. :try_end_2d} :catchall_2e
+ 
+@@ -170,7 +170,7 @@
+     .registers 1
+ 
+     :try_start_0
+-    sget v0, Lcom/oplus/os/OplusBuild$VERSION;->SDK_SUB_VERSION:I
++    sget v0, Lorg/pixelos/pagani/compat/OplusBuild$VERSION;->SDK_SUB_VERSION:I
+     :try_end_2
+     .catchall {:try_start_0 .. :try_end_2} :catchall_3
+ 
+--- a/classes/b1/a.smali
++++ b/classes/b1/a.smali
+@@ -93,7 +93,7 @@
+ 
+     :cond_6
+     :try_start_6
+-    sget v0, Lcom/oplus/os/OplusBuild$VERSION;->SDK_VERSION:I
++    sget v0, Lorg/pixelos/pagani/compat/OplusBuild$VERSION;->SDK_VERSION:I
+     :try_end_8
+     .catchall {:try_start_6 .. :try_end_8} :catchall_9
+ 
+@@ -139,7 +139,7 @@
+     .registers 3
+ 
+     :try_start_0
+-    sget v0, Lcom/oplus/os/OplusBuild$VERSION;->SDK_SUB_VERSION:I
++    sget v0, Lorg/pixelos/pagani/compat/OplusBuild$VERSION;->SDK_SUB_VERSION:I
+     :try_end_2
+     .catchall {:try_start_0 .. :try_end_2} :catchall_3
+ 
+--- a/classes/com/coui/appcompat/animation/touchanimation/COUITouchMotionAnimator.smali
++++ b/classes/com/coui/appcompat/animation/touchanimation/COUITouchMotionAnimator.smali
+@@ -641,7 +641,7 @@
+     const/4 p0, 0x0
+ 
+     :try_start_9
+-    sget v0, Lcom/oplus/os/OplusBuild$VERSION;->SDK_VERSION:I
++    sget v0, Lorg/pixelos/pagani/compat/OplusBuild$VERSION;->SDK_VERSION:I
+     :try_end_b
+     .catchall {:try_start_9 .. :try_end_b} :catchall_12
+ 
+--- a/classes/com/coui/appcompat/b.smali
++++ b/classes/com/coui/appcompat/b.smali
+@@ -81,7 +81,7 @@
+ 
+     :cond_6
+     :try_start_6
+-    sget v0, Lcom/oplus/os/OplusBuild$VERSION;->SDK_VERSION:I
++    sget v0, Lorg/pixelos/pagani/compat/OplusBuild$VERSION;->SDK_VERSION:I
+     :try_end_8
+     .catchall {:try_start_6 .. :try_end_8} :catchall_9
+ 
+@@ -165,7 +165,7 @@
+     .registers 3
+ 
+     :try_start_0
+-    sget p0, Lcom/oplus/os/OplusBuild$VERSION;->SDK_SUB_VERSION:I
++    sget p0, Lorg/pixelos/pagani/compat/OplusBuild$VERSION;->SDK_SUB_VERSION:I
+     :try_end_2
+     .catchall {:try_start_0 .. :try_end_2} :catchall_3
+ 
+--- a/classes2/com/oplus/compat/utils/util/VersionUtils.smali
++++ b/classes2/com/oplus/compat/utils/util/VersionUtils.smali
+@@ -236,7 +236,7 @@
+     const/4 v0, 0x0
+ 
+     :try_start_1
+-    invoke-static {}, Lcom/oplus/os/OplusBuild;->getOplusOSVERSION()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/OplusBuild;->getOplusOSVERSION()I
+ 
+     move-result v1
+     :try_end_5
+@@ -295,7 +295,7 @@
+     const/4 v0, 0x0
+ 
+     :try_start_1
+-    invoke-static {}, Lcom/oplus/os/OplusBuild;->getOplusOSVERSION()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/OplusBuild;->getOplusOSVERSION()I
+ 
+     move-result v1
+     :try_end_5
+--- a/classes2/com/oplus/epona/n.smali
++++ b/classes2/com/oplus/epona/n.smali
+@@ -10,7 +10,7 @@
+     const/4 v0, 0x0
+ 
+     :try_start_1
+-    invoke-static {}, Lcom/oplus/os/OplusBuild;->getOplusOSVERSION()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/OplusBuild;->getOplusOSVERSION()I
+ 
+     move-result v1
+     :try_end_5
+--- a/classes2/fa/b.smali
++++ b/classes2/fa/b.smali
+@@ -14,7 +14,7 @@
+     const/4 v1, 0x0
+ 
+     :try_start_4
+-    invoke-static {}, Lcom/oplus/os/OplusBuild;->getOplusOSVERSION()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/OplusBuild;->getOplusOSVERSION()I
+ 
+     move-result v2
+     :try_end_8
+--- a/classes2/q9/i.smali
++++ b/classes2/q9/i.smali
+@@ -10,7 +10,7 @@
+     const/4 v0, 0x0
+ 
+     :try_start_1
+-    invoke-static {}, Lcom/oplus/os/OplusBuild;->getOplusOSVERSION()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/OplusBuild;->getOplusOSVERSION()I
+ 
+     move-result v1
+     :try_end_5
+--- a/classes3/ta/i.smali
++++ b/classes3/ta/i.smali
+@@ -14,7 +14,7 @@
+     :try_start_3
+     sget-object v2, Lkotlin/Result;->a:Lkotlin/Result$a;
+ 
+-    sget v2, Lcom/oplus/os/OplusBuild$VERSION;->SDK_VERSION:I
++    sget v2, Lorg/pixelos/pagani/compat/OplusBuild$VERSION;->SDK_VERSION:I
+ 
+     const/16 v3, 0x21
+ 
+--- a/classes3/ta/r.smali
++++ b/classes3/ta/r.smali
+@@ -10,7 +10,7 @@
+     :try_start_0
+     sget-object v0, Lkotlin/Result;->a:Lkotlin/Result$a;
+ 
+-    sget v0, Lcom/oplus/os/OplusBuild$VERSION;->SDK_VERSION:I
++    sget v0, Lorg/pixelos/pagani/compat/OplusBuild$VERSION;->SDK_VERSION:I
+ 
+     const/16 v1, 0x22
+ 

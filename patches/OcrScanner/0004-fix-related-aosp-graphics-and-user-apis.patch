@@ -1,0 +1,241 @@
+--- a/classes/B2/c.smali
++++ b/classes/B2/c.smali
+@@ -1820,11 +1820,11 @@
+ 
+     .line 106
+     :cond_69
+-    new-instance p2, Lcom/oplus/graphics/OplusPath;
++    new-instance p2, Lorg/pixelos/pagani/compat/PathCompat;
+ 
+     .line 107
+     .line 108
+-    invoke-direct {p2, p0}, Lcom/oplus/graphics/OplusPath;-><init>(Landroid/graphics/Path;)V
++    invoke-direct {p2, p0}, Lorg/pixelos/pagani/compat/PathCompat;-><init>(Landroid/graphics/Path;)V
+ 
+     .line 109
+     .line 110
+@@ -1833,7 +1833,7 @@
+ 
+     .line 112
+     .line 113
+-    invoke-virtual {p2, p1, v0, p4, p3}, Lcom/oplus/graphics/OplusPath;->addSmoothRoundRect(Landroid/graphics/RectF;[FLandroid/graphics/Path$Direction;F)V
++    invoke-virtual {p2, p1, v0, p4, p3}, Lorg/pixelos/pagani/compat/PathCompat;->addSmoothRoundRect(Landroid/graphics/RectF;[FLandroid/graphics/Path$Direction;F)V
+ 
+     .line 114
+     .line 115
+--- a/classes/com/coui/appcompat/COUIMaterialStateManager.smali
++++ b/classes/com/coui/appcompat/COUIMaterialStateManager.smali
+@@ -1475,7 +1475,7 @@
+ 
+     .line 24
+     .line 25
+-    invoke-static {}, Lcom/oplus/wrapper/os/UserHandle;->myUserId()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/UiCompat;->myUserId()I
+ 
+     .line 26
+     .line 27
+@@ -1483,7 +1483,7 @@
+     move-result v0
+ 
+     .line 29
+-    sget v1, Lcom/oplus/wrapper/os/UserHandle;->USER_SYSTEM:I
++    sget v1, Lorg/pixelos/pagani/compat/UiCompat;->USER_SYSTEM:I
+ 
+     .line 30
+     .line 31
+@@ -1504,7 +1504,7 @@
+ 
+     .line 38
+     .line 39
+-    sget v4, Lcom/oplus/wrapper/os/UserHandle;->USER_SYSTEM:I
++    sget v4, Lorg/pixelos/pagani/compat/UiCompat;->USER_SYSTEM:I
+ 
+     .line 40
+     .line 41
+--- a/classes/com/coui/appcompat/poplist/RoundFrameLayout.smali
++++ b/classes/com/coui/appcompat/poplist/RoundFrameLayout.smali
+@@ -2127,7 +2127,7 @@
+ 
+     .line 45
+     .line 46
+-    new-instance v0, Lcom/oplus/graphics/OplusPath;
++    new-instance v0, Lorg/pixelos/pagani/compat/PathCompat;
+ 
+     .line 47
+     .line 48
+@@ -2135,7 +2135,7 @@
+ 
+     .line 49
+     .line 50
+-    invoke-direct {v0, v1}, Lcom/oplus/graphics/OplusPath;-><init>(Landroid/graphics/Path;)V
++    invoke-direct {v0, v1}, Lorg/pixelos/pagani/compat/PathCompat;-><init>(Landroid/graphics/Path;)V
+ 
+     .line 51
+     .line 52
+@@ -2152,7 +2152,7 @@
+ 
+     .line 58
+     .line 59
+-    invoke-virtual {v0, v1, v3, v2, v4}, Lcom/oplus/graphics/OplusPath;->addSmoothRoundRect(Landroid/graphics/RectF;FFLandroid/graphics/Path$Direction;)V
++    invoke-virtual {v0, v1, v3, v2, v4}, Lorg/pixelos/pagani/compat/PathCompat;->addSmoothRoundRect(Landroid/graphics/RectF;FFLandroid/graphics/Path$Direction;)V
+ 
+     .line 60
+     .line 61
+--- a/classes/com/coui/appcompat/toolbar/AppBarBlurHelper.smali
++++ b/classes/com/coui/appcompat/toolbar/AppBarBlurHelper.smali
+@@ -1068,7 +1068,7 @@
+     const/4 v2, 0x1
+ 
+     .line 65
+-    invoke-static/range {v0 .. v6}, Lcom/oplus/graphics/OplusRenderEffect;->createGradientBlurEffect(FFZFIII)Landroid/graphics/RenderEffect;
++    invoke-static/range {v0 .. v6}, Lorg/pixelos/pagani/compat/UiCompat;->createGradientBlurEffect(FFZFIII)Landroid/graphics/RenderEffect;
+ 
+     .line 66
+     .line 67
+@@ -6513,7 +6513,7 @@
+     const/4 v6, 0x1
+ 
+     .line 87
+-    invoke-static/range {v4 .. v10}, Lcom/oplus/graphics/OplusRenderEffect;->createGradientBlurEffect(FFZFIII)Landroid/graphics/RenderEffect;
++    invoke-static/range {v4 .. v10}, Lorg/pixelos/pagani/compat/UiCompat;->createGradientBlurEffect(FFZFIII)Landroid/graphics/RenderEffect;
+ 
+     .line 88
+     .line 89
+--- a/classes4/K9/a.smali
++++ b/classes4/K9/a.smali
+@@ -74,7 +74,7 @@
+ 
+     .line 3
+     .line 4
+-    invoke-static {}, Lcom/oplus/wrapper/os/UserHandle;->myUserId()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/UiCompat;->myUserId()I
+ 
+     .line 5
+     .line 6
+--- a/classes2/com/heytap/speechassist/aichatinput/ui/b.smali
++++ b/classes2/com/heytap/speechassist/aichatinput/ui/b.smali
+@@ -773,11 +773,11 @@
+ 
+     .line 43
+     .line 44
+-    new-instance v2, Lcom/oplus/graphics/OplusPath;
++    new-instance v2, Lorg/pixelos/pagani/compat/PathCompat;
+ 
+     .line 45
+     .line 46
+-    invoke-direct {v2, v1}, Lcom/oplus/graphics/OplusPath;-><init>(Landroid/graphics/Path;)V
++    invoke-direct {v2, v1}, Lorg/pixelos/pagani/compat/PathCompat;-><init>(Landroid/graphics/Path;)V
+ 
+     .line 47
+     .line 48
+@@ -803,7 +803,7 @@
+ 
+     .line 57
+     :try_start_38
+-    invoke-virtual/range {v2 .. v7}, Lcom/oplus/graphics/OplusPath;->addSmoothRoundRect(Landroid/graphics/RectF;FFFLandroid/graphics/Path$Direction;)V
++    invoke-virtual/range {v2 .. v7}, Lorg/pixelos/pagani/compat/PathCompat;->addSmoothRoundRect(Landroid/graphics/RectF;FFFLandroid/graphics/Path$Direction;)V
+ 
+     .line 58
+     .line 59
+--- a/classes4/com/oplus/scanner/common/utils/p0.smali
++++ b/classes4/com/oplus/scanner/common/utils/p0.smali
+@@ -347,7 +347,7 @@
+ 
+     .line 38
+     :cond_25
+-    invoke-static {}, Lcom/oplus/wrapper/os/UserHandle;->myUserId()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/UiCompat;->myUserId()I
+ 
+     .line 39
+     .line 40
+@@ -774,7 +774,7 @@
+ 
+     .line 45
+     :cond_2c
+-    invoke-static {}, Lcom/oplus/wrapper/os/UserHandle;->myUserId()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/UiCompat;->myUserId()I
+ 
+     .line 46
+     .line 47
+--- a/classes4/com/oplus/scanengine/router/ZoomOpenServiceHandler.smali
++++ b/classes4/com/oplus/scanengine/router/ZoomOpenServiceHandler.smali
+@@ -120,7 +120,7 @@
+     move-result-object v0
+ 
+     .line 29
+-    invoke-static {}, Lcom/oplus/wrapper/os/UserHandle;->myUserId()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/UiCompat;->myUserId()I
+ 
+     .line 30
+     .line 31
+@@ -557,7 +557,7 @@
+     move-result-object v2
+ 
+     .line 36
+-    invoke-static {}, Lcom/oplus/wrapper/os/UserHandle;->myUserId()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/UiCompat;->myUserId()I
+ 
+     .line 37
+     .line 38
+--- a/classes4/com/oplus/scanner/common/core/widgets/RoundPreviewView.smali
++++ b/classes4/com/oplus/scanner/common/core/widgets/RoundPreviewView.smali
+@@ -460,7 +460,7 @@
+     .line 60
+     .line 61
+     .line 62
+-    new-instance v2, Lcom/oplus/graphics/OplusPath;
++    new-instance v2, Lorg/pixelos/pagani/compat/PathCompat;
+ 
+     .line 63
+     .line 64
+@@ -468,7 +468,7 @@
+ 
+     .line 65
+     .line 66
+-    invoke-direct {v2, v1}, Lcom/oplus/graphics/OplusPath;-><init>(Landroid/graphics/Path;)V
++    invoke-direct {v2, v1}, Lorg/pixelos/pagani/compat/PathCompat;-><init>(Landroid/graphics/Path;)V
+ 
+     .line 67
+     .line 68
+@@ -493,7 +493,7 @@
+     move v5, v4
+ 
+     .line 79
+-    invoke-virtual/range {v2 .. v7}, Lcom/oplus/graphics/OplusPath;->addSmoothRoundRect(Landroid/graphics/RectF;FFFLandroid/graphics/Path$Direction;)V
++    invoke-virtual/range {v2 .. v7}, Lorg/pixelos/pagani/compat/PathCompat;->addSmoothRoundRect(Landroid/graphics/RectF;FFFLandroid/graphics/Path$Direction;)V
+ 
+     .line 80
+     .line 81
+--- a/classes4/com/oplus/scanner/common/base/view/FrostedBackdropView.smali
++++ b/classes4/com/oplus/scanner/common/base/view/FrostedBackdropView.smali
+@@ -771,7 +771,7 @@
+ 
+     .line 43
+     :try_start_2a
+-    invoke-static/range {v3 .. v10}, Lcom/oplus/graphics/OplusRenderEffect;->createGradientBlurEffect(FFZFIIILandroid/graphics/RenderEffect;)Landroid/graphics/RenderEffect;
++    invoke-static/range {v3 .. v10}, Lorg/pixelos/pagani/compat/UiCompat;->createGradientBlurEffect(FFZFIIILandroid/graphics/RenderEffect;)Landroid/graphics/RenderEffect;
+ 
+     .line 44
+     .line 45
+--- a/classes4/com/oplus/scanner/common/base/view/OseeBottomGradientBlur.smali
++++ b/classes4/com/oplus/scanner/common/base/view/OseeBottomGradientBlur.smali
+@@ -1400,7 +1400,7 @@
+     const/4 v5, 0x0
+ 
+     .line 20
+-    invoke-static/range {v0 .. v7}, Lcom/oplus/graphics/OplusRenderEffect;->createGradientBlurEffect(FFZFIIILandroid/graphics/RenderEffect;)Landroid/graphics/RenderEffect;
++    invoke-static/range {v0 .. v7}, Lorg/pixelos/pagani/compat/UiCompat;->createGradientBlurEffect(FFZFIIILandroid/graphics/RenderEffect;)Landroid/graphics/RenderEffect;
+ 
+     .line 21
+     .line 22
+--- a/classes4/com/oplus/scanner/common/base/view/OseeHeaderGradientBlur.smali
++++ b/classes4/com/oplus/scanner/common/base/view/OseeHeaderGradientBlur.smali
+@@ -1497,7 +1497,7 @@
+     const/4 v5, 0x0
+ 
+     .line 20
+-    invoke-static/range {v0 .. v7}, Lcom/oplus/graphics/OplusRenderEffect;->createGradientBlurEffect(FFZFIIILandroid/graphics/RenderEffect;)Landroid/graphics/RenderEffect;
++    invoke-static/range {v0 .. v7}, Lorg/pixelos/pagani/compat/UiCompat;->createGradientBlurEffect(FFZFIIILandroid/graphics/RenderEffect;)Landroid/graphics/RenderEffect;
+ 
+     .line 21
+     .line 22

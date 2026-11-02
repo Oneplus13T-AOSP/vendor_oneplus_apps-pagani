@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: Apache-2.0
+# source:destination;EXTRACT_ONLY|stock SHA-1|fixed-up unsigned SHA-1
+# JNI-bearing apps use build/apps-prebuilt.mk rather than duplicate Soong imports.
+
+# Apps - Extracted from OnePlus 13T PKX110_17.0.0.104(CN01)
+my_stock/del-app/OplusDocumentsReader/OplusDocumentsReader.apk:product/app/OplusDocumentsReader/OplusDocumentsReader.apk;EXTRACT_ONLY|e1e7b2eec4e888a71330380263720d931b98ad93|421a9e0c630a303927ec6cd5f2b2b6b913719e10
+my_stock/del-app/OcrScanner/OcrScanner.apk:product/app/OcrScanner/OcrScanner.apk;EXTRACT_ONLY|54dbe47ce749c12eda56da84cac11b0c4163a9e1|b635b3b57e1bbf2ae06ea511b3bce5913bd2994c
+my_product/del-app/ConsumerIRApp/ConsumerIRApp.apk:product/app/ConsumerIRApp/ConsumerIRApp.apk;EXTRACT_ONLY|bce3c54934c40e3db429e525dbc2e800a23a4de9|4a745591902d08ca5ad18997bc9dd2b988fc524a
+
+# Apps - Extracted from Sony Xperia XQ-GE44 Customized JP 73.1.A.2.74
+product/deletable-app/SemcMusicApp/SemcMusicApp.apk:product/app/SemcMusicApp/SemcMusicApp.apk;EXTRACT_ONLY|f80552051ae44707bd2b00c764a4a1bf5e3f7f5b|773f3d9ac6542c8dff3c54872f0a61ba796063df

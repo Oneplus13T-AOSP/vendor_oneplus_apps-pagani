@@ -1,0 +1,169 @@
+--- a/classes/com/coui/appcompat/c.smali
++++ b/classes/com/coui/appcompat/c.smali
+@@ -616,7 +616,7 @@
+     .line 12
+     :cond_b
+     :try_start_b
+-    invoke-static {p0, p1}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p0, p1}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+     :try_end_e
+     .catch Ljava/lang/NoClassDefFoundError; {:try_start_b .. :try_end_e} :catch_1e
+     .catch Ljava/lang/NoSuchMethodError; {:try_start_b .. :try_end_e} :catch_f
+--- a/classes/com/coui/appcompat/floatingactionbutton/m$a.smali
++++ b/classes/com/coui/appcompat/floatingactionbutton/m$a.smali
+@@ -1,5 +1,5 @@
+ .class Lcom/coui/appcompat/floatingactionbutton/m$a;
+-.super Lcom/oplus/animation/OplusViewSeamless$AnimationCallback;
++.super Lorg/pixelos/pagani/compat/UiCompat$AnimationCallback;
+ .source "COUIFloatingButtonSeamlessImpl.java"
+ 
+ 
+@@ -45,7 +45,7 @@
+ 
+     .line 8
+     .line 9
+-    invoke-direct {p0}, Lcom/oplus/animation/OplusViewSeamless$AnimationCallback;-><init>()V
++    invoke-direct {p0}, Lorg/pixelos/pagani/compat/UiCompat$AnimationCallback;-><init>()V
+ 
+     .line 10
+     .line 11
+--- a/classes/com/coui/appcompat/floatingactionbutton/m.smali
++++ b/classes/com/coui/appcompat/floatingactionbutton/m.smali
+@@ -446,7 +446,7 @@
+     .line 93
+     .line 94
+     .line 95
+-    invoke-static {p1, v0, v2, v3}, Lcom/oplus/animation/OplusViewSeamless;->setSeamlessView(Landroid/view/View;Landroid/content/Context;Landroid/os/Bundle;Lcom/oplus/animation/OplusViewSeamless$AnimationCallback;)Z
++    invoke-static {p1, v0, v2, v3}, Lorg/pixelos/pagani/compat/UiCompat;->setSeamlessView(Landroid/view/View;Landroid/content/Context;Landroid/os/Bundle;Lorg/pixelos/pagani/compat/UiCompat$AnimationCallback;)Z
+ 
+     .line 96
+     .line 97
+--- a/classes2/z4/a.smali
++++ b/classes2/z4/a.smali
+@@ -113,7 +113,7 @@
+     .line 14
+     .line 15
+     :try_start_e
+-    invoke-static {p2, p1}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p2, p1}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+     :try_end_11
+     .catchall {:try_start_e .. :try_end_11} :catchall_13
+ 
+--- a/classes4/com/oplus/scanner/common/base/view/FrostedBackdropView.smali
++++ b/classes4/com/oplus/scanner/common/base/view/FrostedBackdropView.smali
+@@ -783,7 +783,7 @@
+ 
+     .line 48
+     .line 49
+-    invoke-static {p1, p2}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p1, p2}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 50
+     .line 51
+@@ -985,7 +985,7 @@
+ 
+     .line 141
+     .line 142
+-    invoke-static {p1, v0}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p1, v0}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 143
+     .line 144
+@@ -1833,7 +1833,7 @@
+ 
+     .line 5
+     .line 6
+-    invoke-static {v0, v1}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {v0, v1}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 7
+     .line 8
+--- a/classes4/com/oplus/scanner/common/base/view/GaussianBackgroundView.smali
++++ b/classes4/com/oplus/scanner/common/base/view/GaussianBackgroundView.smali
+@@ -479,7 +479,7 @@
+ 
+     .line 178
+     .line 179
+-    invoke-static {p1, v0}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p1, v0}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 180
+     .line 181
+@@ -1526,7 +1526,7 @@
+     :cond_15
+     iget-object p0, p0, LX6/a;->d:Landroid/widget/FrameLayout;
+ 
+-    invoke-static {p1, p0}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p1, p0}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     return-void
+ .end method
+--- a/classes4/com/oplus/scanner/common/base/view/OseeBottomGradientBlur.smali
++++ b/classes4/com/oplus/scanner/common/base/view/OseeBottomGradientBlur.smali
+@@ -1408,7 +1408,7 @@
+     move-result-object p0
+ 
+     .line 24
+-    invoke-static {p0, p1}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p0, p1}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 25
+     .line 26
+@@ -1475,7 +1475,7 @@
+ 
+     .line 8
+     .line 9
+-    invoke-static {p0, p1}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p0, p1}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 10
+     .line 11
+@@ -3154,7 +3154,7 @@
+ 
+     .line 14
+     .line 15
+-    invoke-static {v2, v1}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {v2, v1}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 16
+     .line 17
+--- a/classes4/com/oplus/scanner/common/base/view/OseeHeaderGradientBlur.smali
++++ b/classes4/com/oplus/scanner/common/base/view/OseeHeaderGradientBlur.smali
+@@ -1505,7 +1505,7 @@
+     move-result-object p0
+ 
+     .line 24
+-    invoke-static {p0, p1}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p0, p1}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 25
+     .line 26
+@@ -1572,7 +1572,7 @@
+ 
+     .line 8
+     .line 9
+-    invoke-static {p0, p1}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {p0, p1}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 10
+     .line 11
+@@ -3629,7 +3629,7 @@
+ 
+     .line 14
+     .line 15
+-    invoke-static {v2, v1}, Lcom/oplus/view/OplusViewBackgroundRenderEffect;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
++    invoke-static {v2, v1}, Lorg/pixelos/pagani/compat/UiCompat;->setBackgroundRenderEffect(Landroid/graphics/RenderEffect;Landroid/view/View;)V
+ 
+     .line 16
+     .line 17
+--- a/classes4/com/oplus/scanner/ui/main/CameraActivity.smali
++++ b/classes4/com/oplus/scanner/ui/main/CameraActivity.smali
+@@ -17349,7 +17349,7 @@
+ 
+     .line 92
+     .line 93
+-    invoke-static {p0}, Lcom/oplus/animation/OplusViewSeamless;->setSkipViewSeamless(Landroid/app/Activity;)V
++    invoke-static {p0}, Lorg/pixelos/pagani/compat/UiCompat;->setSkipViewSeamless(Landroid/app/Activity;)V
+ 
+     .line 94
+     .line 95

@@ -1,0 +1,215 @@
+--- a/classes2/com/oplus/consumerIRApp/navigation/IrApplication.smali
++++ b/classes2/com/oplus/consumerIRApp/navigation/IrApplication.smali
+@@ -350,8 +350,6 @@
+ 
+     invoke-virtual {p0}, Lcom/oplus/consumerIRApp/navigation/IrApplication;->j()V
+ 
+-    invoke-virtual {p0}, Lcom/oplus/consumerIRApp/navigation/IrApplication;->i()V
+-
+     const/4 v1, 0x1
+ 
+     invoke-virtual {v0, p0, v1}, Lcom/oplus/drs/statistics/OplusTrack;->init(Landroid/content/Context;Z)V
+@@ -362,6 +360,8 @@
+     invoke-virtual {v0, p0, v2}, Lcom/oplus/drs/statistics/OplusTrack;->init(Landroid/content/Context;Z)V
+ 
+     :goto_3e
++    invoke-virtual {p0}, Lcom/oplus/consumerIRApp/navigation/IrApplication;->i()V
++
+     new-instance v0, Lcom/oplus/consumerIRApp/navigation/IrApplication$a;
+ 
+     invoke-direct {v0}, Lcom/oplus/consumerIRApp/navigation/IrApplication$a;-><init>()V
+--- a/classes2/com/oplus/consumerIRApp/navigation/fragment/AddFailFragment.smali
++++ b/classes2/com/oplus/consumerIRApp/navigation/fragment/AddFailFragment.smali
+@@ -113,70 +113,7 @@
+ .end method
+ 
+ .method public static final S(Lcom/oplus/consumerIRApp/navigation/fragment/AddFailFragment;)V
+-    .registers 5
+-
+-    const-string v0, "this$0"
+-
+-    invoke-static {p0, v0}, Lkotlin/jvm/internal/j;->g(Ljava/lang/Object;Ljava/lang/String;)V
+-
+-    const-string v0, "AddFailFragment"
+-
+-    const-string v1, "PositiveButton Click"
+-
+-    invoke-static {v0, v1}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->a(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->requireContext()Landroid/content/Context;
+-
+-    move-result-object v0
+-
+-    const-string v1, "key_button_online"
+-
+-    const/4 v2, 0x1
+-
+-    invoke-static {v0, v1, v2}, Lcom/oplus/consumerIRApp/navigation/utils/r0;->g(Landroid/content/Context;Ljava/lang/String;Z)V
+-
+-    new-instance v0, Landroid/content/Intent;
+-
+-    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+-
+-    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getActivity()Landroidx/fragment/app/FragmentActivity;
+-
+-    move-result-object v1
+-
+-    if-eqz v1, :cond_26
+-
+-    const-class v2, Lcom/oplus/consumerIRApp/navigation/RecognizeActivity;
+-
+-    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+-
+-    :cond_26
+-    new-instance v1, Lf8/b;
+-
+-    new-instance v2, Lcom/oplus/consumerIRApp/sdkSeal/b;
+-
+-    new-instance v3, Lcom/oplus/consumerIRApp/sdkSeal/KuKongAbility;
+-
+-    invoke-direct {v3}, Lcom/oplus/consumerIRApp/sdkSeal/KuKongAbility;-><init>()V
+-
+-    invoke-direct {v2, v3}, Lcom/oplus/consumerIRApp/sdkSeal/b;-><init>(Lcom/oplus/consumerIRApp/sdkSeal/d;)V
+-
+-    invoke-direct {v1, v2}, Lf8/b;-><init>(Lcom/oplus/consumerIRApp/sdkSeal/b;)V
+-
+-    const/4 v2, 0x0
+-
+-    invoke-virtual {v1, v2}, Lf8/b;->W(Z)V
+-
+-    invoke-virtual {p0, v0}, Landroidx/fragment/app/Fragment;->startActivity(Landroid/content/Intent;)V
+-
+-    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getActivity()Landroidx/fragment/app/FragmentActivity;
+-
+-    move-result-object p0
+-
+-    if-eqz p0, :cond_45
+-
+-    invoke-virtual {p0}, Landroid/app/Activity;->finish()V
+-
+-    :cond_45
++    .locals 0
+     return-void
+ .end method
+ 
+@@ -193,11 +130,9 @@
+ 
+     if-eqz v0, :cond_13
+ 
+-    new-instance v1, Lcom/oplus/consumerIRApp/navigation/fragment/f;
+-
+-    invoke-direct {v1, p0}, Lcom/oplus/consumerIRApp/navigation/fragment/f;-><init>(Lcom/oplus/consumerIRApp/navigation/fragment/AddFailFragment;)V
+-
+-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
++    const/16 v1, 0x8
++
++    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+ 
+     :cond_13
+     iget-object v0, p0, Lcom/oplus/consumerIRApp/navigation/fragment/AddFailFragment;->f:Lcom/coui/appcompat/button/COUIButton;
+@@ -661,70 +596,7 @@
+ .end method
+ 
+ .method public final W()V
+-    .registers 5
+-
+-    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->requireContext()Landroid/content/Context;
+-
+-    move-result-object v0
+-
+-    invoke-static {v0}, Lcom/oplus/consumerIRApp/navigation/utils/g0;->h(Landroid/content/Context;)Z
+-
+-    move-result v0
+-
+-    xor-int/lit8 v1, v0, 0x1
+-
+-    new-instance v2, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string v3, "jumpRecognizeActivity isOffLine: "
+-
+-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v1
+-
+-    const-string v2, "AddFailFragment"
+-
+-    invoke-static {v2, v1}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->c(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    if-nez v0, :cond_26
+-
+-    invoke-virtual {p0}, Lcom/oplus/consumerIRApp/navigation/fragment/AddFailFragment;->R()V
+-
+-    goto :goto_42
+-
+-    :cond_26
+-    new-instance v0, Landroid/content/Intent;
+-
+-    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+-
+-    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getActivity()Landroidx/fragment/app/FragmentActivity;
+-
+-    move-result-object v1
+-
+-    if-eqz v1, :cond_36
+-
+-    const-class v2, Lcom/oplus/consumerIRApp/navigation/RecognizeActivity;
+-
+-    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+-
+-    :cond_36
+-    invoke-virtual {p0, v0}, Landroidx/fragment/app/Fragment;->startActivity(Landroid/content/Intent;)V
+-
+-    invoke-virtual {p0}, Landroidx/fragment/app/Fragment;->getActivity()Landroidx/fragment/app/FragmentActivity;
+-
+-    move-result-object p0
+-
+-    if-eqz p0, :cond_42
+-
+-    invoke-virtual {p0}, Landroid/app/Activity;->finish()V
+-
+-    :cond_42
+-    :goto_42
++    .locals 0
+     return-void
+ .end method
+ 
+--- a/classes2/com/oplus/consumerIRApp/sdkSeal/KuKongAbility.smali
++++ b/classes2/com/oplus/consumerIRApp/sdkSeal/KuKongAbility.smali
+@@ -1647,6 +1647,18 @@
+ 
+     invoke-static {v0, v3}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->a(Ljava/lang/String;Ljava/lang/String;)V
+ 
++    invoke-static {p1}, Lcom/hzy/tvmao/KookongSDK;->preinit(Landroid/content/Context;)V
++
++    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
++
++    move-result-object v3
++
++    invoke-static {v3}, Lcom/hzy/tvmao/KookongSDK;->setOfflineDBPath(Ljava/lang/String;)V
++
++    sget-object v3, Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;->OfflineOnly:Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;
++
++    invoke-static {v3}, Lcom/hzy/tvmao/KookongSDK;->setMode(Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;)V
++
+     const-string v3, ""
+ 
+     invoke-static {p1, v4, v3}, Lcom/hzy/tvmao/KookongSDK;->init(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Z
+@@ -1670,12 +1682,6 @@
+     move-result-object p0
+ 
+     invoke-static {v0, p0}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->a(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+-
+-    move-result-object p0
+-
+-    invoke-static {p0}, Lcom/hzy/tvmao/KookongSDK;->setOfflineDBPath(Ljava/lang/String;)V
+     :try_end_65
+     .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_65} :catch_66
+ 

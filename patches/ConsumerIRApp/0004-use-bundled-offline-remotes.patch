@@ -1,0 +1,248 @@
+--- a/classes2/com/oplus/consumerIRApp/navigation/HomeActivity.smali
++++ b/classes2/com/oplus/consumerIRApp/navigation/HomeActivity.smali
+@@ -1549,72 +1549,17 @@
+ .end method
+ 
+ .method public final M0(I)V
+-    .registers 7
+-
+-    const-string v0, "jumpRecognizeActivity"
+-
+-    const-string v1, "HomeActivity"
+-
+-    invoke-static {v1, v0}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->a(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    invoke-static {p0}, Lcom/oplus/consumerIRApp/navigation/utils/g0;->h(Landroid/content/Context;)Z
+-
+-    move-result v0
+-
+-    xor-int/lit8 v2, v0, 0x1
+-
+-    new-instance v3, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string v4, "isOffLine: "
+-
+-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v2
+-
+-    invoke-static {v1, v2}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->c(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    if-nez v0, :cond_27
+-
+-    invoke-virtual {p0, p1}, Lcom/oplus/consumerIRApp/navigation/HomeActivity;->c0(I)V
+-
+-    goto :goto_42
+-
+-    :cond_27
+-    if-eqz p1, :cond_38
+-
+-    const/4 v0, 0x1
+-
+-    if-eq p1, v0, :cond_2d
+-
+-    goto :goto_42
+-
+-    :cond_2d
+-    new-instance p1, Landroid/content/Intent;
+-
+-    const-class v0, Lcom/oplus/consumerIRApp/qrScan/CaptureActivity;
+-
+-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+-
+-    invoke-virtual {p0, p1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+-
+-    goto :goto_42
+-
+-    :cond_38
+-    new-instance p1, Landroid/content/Intent;
+-
+-    const-class v0, Lcom/oplus/consumerIRApp/navigation/RecognizeActivity;
+-
+-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+-
+-    invoke-virtual {p0, p1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+-
+-    :goto_42
++    .locals 3
++    sget-object v0, Lcom/oplus/consumerIRApp/navigation/utils/s0;->a:Lcom/oplus/consumerIRApp/navigation/utils/s0;
++    const/4 v1, 0x0
++    invoke-virtual {v0, p0, v1}, Lcom/oplus/consumerIRApp/navigation/utils/s0;->p(Landroid/content/Context;Z)V
++    invoke-virtual {v0, p0, v1}, Lcom/oplus/consumerIRApp/navigation/utils/s0;->n(Landroid/content/Context;Z)V
++    invoke-virtual {v0, p0, v1}, Lcom/oplus/consumerIRApp/navigation/utils/s0;->l(Landroid/content/Context;Z)V
++    invoke-virtual {v0, p0, v1}, Lcom/oplus/consumerIRApp/navigation/utils/s0;->o(Landroid/content/Context;Z)V
++    new-instance v0, Landroid/content/Intent;
++    const-class v2, Lcom/oplus/consumerIRApp/navigation/EntranceActivity;
++    invoke-direct {v0, p0, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
++    invoke-virtual {p0, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+     return-void
+ .end method
+ 
+@@ -3601,6 +3546,8 @@
+     invoke-virtual {v0, v1, p1}, Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V
+ 
+     :goto_1e
++    sget v0, Lcom/oplus/consumerIRApp/R$id;->add_scan_device:I
++    invoke-interface {p1, v0}, Landroid/view/Menu;->removeItem(I)V
+     invoke-super {p0, p1}, Landroid/app/Activity;->onCreateOptionsMenu(Landroid/view/Menu;)Z
+ 
+     move-result p0
+--- a/classes2/com/oplus/consumerIRApp/navigation/utils/g0.smali
++++ b/classes2/com/oplus/consumerIRApp/navigation/utils/g0.smali
+@@ -603,35 +603,9 @@
+ .end method
+ 
+ .method public static final h(Landroid/content/Context;)Z
+-    .registers 3
+-
+-    const-string v0, "key_button_online"
+-
+-    const/4 v1, 0x1
+-
+-    invoke-static {p0, v0, v1}, Lcom/oplus/consumerIRApp/navigation/utils/r0;->c(Landroid/content/Context;Ljava/lang/String;Z)Z
+-
+-    move-result p0
+-
+-    new-instance v0, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string v1, "SP_KEY_BUTTON_ONLINE "
+-
+-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v0
+-
+-    const-string v1, "KKDbManager"
+-
+-    invoke-static {v1, v0}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->a(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    return p0
++    .locals 1
++    const/4 v0, 0x0
++    return v0
+ .end method
+ 
+ .method public static final i(Landroid/content/Context;)Ljava/io/File;
+@@ -696,45 +670,9 @@
+ .end method
+ 
+ .method public static final j(Landroid/content/Context;)Z
+-    .registers 3
+-
+-    if-eqz p0, :cond_7
+-
+-    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+-
+-    move-result-object p0
+-
+-    goto :goto_8
+-
+-    :cond_7
+-    const/4 p0, 0x0
+-
+-    :goto_8
+-    const-string v0, "com.oplus.consumerIRApp.kk_offline_mode"
+-
+-    invoke-static {p0, v0}, Lcom/oplus/coreapp/appfeature/AppFeatureProviderUtils;->g(Landroid/content/ContentResolver;Ljava/lang/String;)Z
+-
+-    move-result p0
+-
+-    new-instance v0, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string v1, "kkOfflineMode "
+-
+-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v0
+-
+-    const-string v1, "KKDbManager"
+-
+-    invoke-static {v1, v0}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->a(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    return p0
++    .locals 1
++    const/4 v0, 0x1
++    return v0
+ .end method
+ 
+ .method public static final k(Landroid/content/Context;)Ljava/io/File;
+--- a/classes2/com/oplus/consumerIRApp/sdkSeal/KuKongAbility.smali
++++ b/classes2/com/oplus/consumerIRApp/sdkSeal/KuKongAbility.smali
+@@ -1748,57 +1748,9 @@
+ .end method
+ 
+ .method public i(Z)V
+-    .registers 3
+-
+-    new-instance p0, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {p0}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string v0, "setOfflineMode: "
+-
+-    invoke-virtual {p0, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {p0, p1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object p0
+-
+-    const-string v0, "KuKongAbility"
+-
+-    invoke-static {v0, p0}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->a(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    if-eqz p1, :cond_20
+-
+-    :try_start_18
+-    sget-object p0, Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;->OfflineOnly:Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;
+-
+-    invoke-static {p0}, Lcom/hzy/tvmao/KookongSDK;->setMode(Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;)V
+-
+-    goto :goto_2d
+-
+-    :catch_1e
+-    move-exception p0
+-
+-    goto :goto_26
+-
+-    :cond_20
+-    sget-object p0, Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;->OnlineFirst:Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;
+-
+-    invoke-static {p0}, Lcom/hzy/tvmao/KookongSDK;->setMode(Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;)V
+-    :try_end_25
+-    .catch Ljava/lang/Exception; {:try_start_18 .. :try_end_25} :catch_1e
+-
+-    goto :goto_2d
+-
+-    :goto_26
+-    invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+-
+-    move-result-object p0
+-
+-    invoke-static {v0, p0}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->b(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    :goto_2d
++    .locals 1
++    sget-object v0, Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;->OfflineOnly:Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;
++    invoke-static {v0}, Lcom/hzy/tvmao/KookongSDK;->setMode(Lcom/hzy/tvmao/offline/SDKSwitcher$Mode;)V
+     return-void
+ .end method
+ 

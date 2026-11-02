@@ -1,0 +1,81 @@
+--- a/classes/e2/c.smali
++++ b/classes/e2/c.smali
+@@ -745,13 +745,13 @@
+     goto :goto_79
+ 
+     :cond_69
+-    new-instance p2, Lcom/oplus/graphics/OplusPath;
+-
+-    invoke-direct {p2, p0}, Lcom/oplus/graphics/OplusPath;-><init>(Landroid/graphics/Path;)V
++    new-instance p2, Lorg/pixelos/pagani/compat/PathCompat;
++
++    invoke-direct {p2, p0}, Lorg/pixelos/pagani/compat/PathCompat;-><init>(Landroid/graphics/Path;)V
+ 
+     sget-object p4, Landroid/graphics/Path$Direction;->CW:Landroid/graphics/Path$Direction;
+ 
+-    invoke-virtual {p2, p1, v0, p4, p3}, Lcom/oplus/graphics/OplusPath;->addSmoothRoundRect(Landroid/graphics/RectF;[FLandroid/graphics/Path$Direction;F)V
++    invoke-virtual {p2, p1, v0, p4, p3}, Lorg/pixelos/pagani/compat/PathCompat;->addSmoothRoundRect(Landroid/graphics/RectF;[FLandroid/graphics/Path$Direction;F)V
+ 
+     goto :goto_79
+ 
+--- a/classes/com/coui/appcompat/COUIMaterialStateManager.smali
++++ b/classes/com/coui/appcompat/COUIMaterialStateManager.smali
+@@ -1082,11 +1082,11 @@
+ 
+     if-eqz v0, :cond_3a
+ 
+-    invoke-static {}, Lcom/oplus/wrapper/os/UserHandle;->myUserId()I
++    invoke-static {}, Lorg/pixelos/pagani/compat/UiCompat;->myUserId()I
+ 
+     move-result v0
+ 
+-    sget v1, Lcom/oplus/wrapper/os/UserHandle;->USER_SYSTEM:I
++    sget v1, Lorg/pixelos/pagani/compat/UiCompat;->USER_SYSTEM:I
+ 
+     if-ne v0, v1, :cond_3a
+ 
+--- a/classes/com/coui/appcompat/poplist/RoundFrameLayout.smali
++++ b/classes/com/coui/appcompat/poplist/RoundFrameLayout.smali
+@@ -1784,11 +1784,11 @@
+ 
+     if-eqz v0, :cond_3e
+ 
+-    new-instance v0, Lcom/oplus/graphics/OplusPath;
++    new-instance v0, Lorg/pixelos/pagani/compat/PathCompat;
+ 
+     iget-object v1, p0, Lcom/coui/appcompat/poplist/RoundFrameLayout;->f:Landroid/graphics/Path;
+ 
+-    invoke-direct {v0, v1}, Lcom/oplus/graphics/OplusPath;-><init>(Landroid/graphics/Path;)V
++    invoke-direct {v0, v1}, Lorg/pixelos/pagani/compat/PathCompat;-><init>(Landroid/graphics/Path;)V
+ 
+     iget-object v1, p0, Lcom/coui/appcompat/poplist/RoundFrameLayout;->i:Landroid/graphics/RectF;
+ 
+@@ -1796,7 +1796,7 @@
+ 
+     sget-object v3, Landroid/graphics/Path$Direction;->CW:Landroid/graphics/Path$Direction;
+ 
+-    invoke-virtual {v0, v1, v4, v2, v3}, Lcom/oplus/graphics/OplusPath;->addSmoothRoundRect(Landroid/graphics/RectF;FFLandroid/graphics/Path$Direction;)V
++    invoke-virtual {v0, v1, v4, v2, v3}, Lorg/pixelos/pagani/compat/PathCompat;->addSmoothRoundRect(Landroid/graphics/RectF;FFLandroid/graphics/Path$Direction;)V
+ 
+     goto :goto_84
+ 
+--- a/classes/com/coui/appcompat/toolbar/AppBarBlurHelper.smali
++++ b/classes/com/coui/appcompat/toolbar/AppBarBlurHelper.smali
+@@ -478,7 +478,7 @@
+ 
+     const/4 v2, 0x1
+ 
+-    invoke-static/range {v0 .. v6}, Lcom/oplus/graphics/OplusRenderEffect;->createGradientBlurEffect(FFZFIII)Landroid/graphics/RenderEffect;
++    invoke-static/range {v0 .. v6}, Lorg/pixelos/pagani/compat/UiCompat;->createGradientBlurEffect(FFZFIII)Landroid/graphics/RenderEffect;
+ 
+     move-result-object p0
+ 
+@@ -2579,7 +2579,7 @@
+ 
+     const/4 v6, 0x1
+ 
+-    invoke-static/range {v4 .. v10}, Lcom/oplus/graphics/OplusRenderEffect;->createGradientBlurEffect(FFZFIII)Landroid/graphics/RenderEffect;
++    invoke-static/range {v4 .. v10}, Lorg/pixelos/pagani/compat/UiCompat;->createGradientBlurEffect(FFZFIII)Landroid/graphics/RenderEffect;
+ 
+     move-result-object v0
+ 

@@ -1,0 +1,147 @@
+--- a/classes4/com/oplus/scanner/common/utils/n.smali
++++ b/classes4/com/oplus/scanner/common/utils/n.smali
+@@ -779,7 +779,8 @@
+ 
+     .line 16
+     .line 17
+-    invoke-static {v1}, Lcom/oplus/wrapper/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
++    const-string v2, ""
++    invoke-static {v1, v2}, Lcom/oplus/scanner/common/utils/n;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+ 
+     .line 18
+     .line 19
+--- a/classes4/com/oplus/scanner/common/utils/t.smali
++++ b/classes4/com/oplus/scanner/common/utils/t.smali
+@@ -175,130 +175,7 @@
+ .end method
+ 
+ .method public static final b()Z
+-    .registers 2
+-
+-    .line 1
+-    :try_start_0
+-    sget-object v0, Lcom/oplus/scanner/common/utils/t;->c:Ljava/lang/Boolean;
+-
+-    .line 2
+-    .line 3
+-    if-eqz v0, :cond_9
+-
+-    .line 4
+-    .line 5
+-    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+-
+-    .line 6
+-    .line 7
+-    .line 8
+-    move-result v0
+-
+-    .line 9
++    .locals 1
++    const/4 v0, 0x0
+     return v0
+-
+-    .line 10
+-    :cond_9
+-    invoke-static {}, Lcom/oplus/scanner/common/utils/W;->s()Z
+-
+-    .line 11
+-    .line 12
+-    .line 13
+-    move-result v0
+-
+-    .line 14
+-    if-eqz v0, :cond_1e
+-
+-    .line 15
+-    .line 16
+-    invoke-static {}, Lcom/oplus/content/OplusFeatureConfigManager;->getInstance()Lcom/oplus/content/OplusFeatureConfigManager;
+-
+-    .line 17
+-    .line 18
+-    .line 19
+-    move-result-object v0
+-
+-    .line 20
+-    const-string v1, "oplus.software.padconnect.support"
+-
+-    .line 21
+-    .line 22
+-    invoke-virtual {v0, v1}, Lcom/oplus/content/OplusFeatureConfigManager;->hasFeature(Ljava/lang/String;)Z
+-
+-    .line 23
+-    .line 24
+-    .line 25
+-    move-result v0
+-
+-    .line 26
+-    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+-
+-    .line 27
+-    .line 28
+-    .line 29
+-    move-result-object v0
+-
+-    .line 30
+-    goto :goto_2c
+-
+-    .line 31
+-    :cond_1e
+-    invoke-static {}, Lcom/oplus/content/OplusFeatureConfigManager;->getInstance()Lcom/oplus/content/OplusFeatureConfigManager;
+-
+-    .line 32
+-    .line 33
+-    .line 34
+-    move-result-object v0
+-
+-    .line 35
+-    const-string v1, "oplus.software.pcconnect.support"
+-
+-    .line 36
+-    .line 37
+-    invoke-virtual {v0, v1}, Lcom/oplus/content/OplusFeatureConfigManager;->hasFeature(Ljava/lang/String;)Z
+-
+-    .line 38
+-    .line 39
+-    .line 40
+-    move-result v0
+-
+-    .line 41
+-    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+-
+-    .line 42
+-    .line 43
+-    .line 44
+-    move-result-object v0
+-
+-    .line 45
+-    :goto_2c
+-    sput-object v0, Lcom/oplus/scanner/common/utils/t;->c:Ljava/lang/Boolean;
+-
+-    .line 46
+-    .line 47
+-    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+-
+-    .line 48
+-    .line 49
+-    .line 50
+-    move-result v0
+-    :try_end_32
+-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_32} :catch_33
+-
+-    .line 51
+-    return v0
+-
+-    .line 52
+-    :catch_33
+-    const/4 v0, 0x0
+-
+-    .line 53
+-    return v0
+-    .line 54
+-    .line 55
+-    .line 56
+-    .line 57
+-    .line 58
+-    .line 59
+-    .line 60
+ .end method

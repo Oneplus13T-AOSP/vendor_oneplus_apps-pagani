@@ -1,0 +1,60 @@
+--- a/classes2/com/oplus/consumerIRApp/navigation/fragment/SettingFragment$c.smali
++++ b/classes2/com/oplus/consumerIRApp/navigation/fragment/SettingFragment$c.smali
+@@ -35,21 +35,7 @@
+ 
+ # virtual methods
+ .method public onPreferenceClick(Landroidx/preference/Preference;)Z
+-    .registers 3
+-
+-    const-string p1, "SettingFragment"
+-
+-    const-string v0, "helpPreference  onPreferenceClick"
+-
+-    invoke-static {p1, v0}, Lcom/oplus/consumerIRApp/navigation/utils/b0;->a(Ljava/lang/String;Ljava/lang/String;)V
+-
+-    iget-object p0, p0, Lcom/oplus/consumerIRApp/navigation/fragment/SettingFragment$c;->a:Lcom/oplus/consumerIRApp/navigation/fragment/SettingFragment;
+-
+-    iget-object p0, p0, Lcom/oplus/consumerIRApp/navigation/fragment/BaseSettingsFragment;->c:Landroid/app/Activity;
+-
+-    const/4 p1, 0x1
+-
+-    invoke-static {p0, p1}, Lg8/c;->g(Landroid/app/Activity;Z)V
+-
+-    return p1
++    .locals 1
++    const/4 v0, 0x1
++    return v0
+ .end method
+--- a/classes2/com/oplus/consumerIRApp/navigation/fragment/SettingFragment.smali
++++ b/classes2/com/oplus/consumerIRApp/navigation/fragment/SettingFragment.smali
+@@ -100,28 +100,11 @@
+ 
+     :cond_3b
+     const-string v0, "setting_feedback"
+-
+     invoke-virtual {p0, v0}, Landroidx/preference/PreferenceFragmentCompat;->findPreference(Ljava/lang/CharSequence;)Landroidx/preference/Preference;
+-
+     move-result-object v0
+-
+-    check-cast v0, Lcom/coui/appcompat/preference/COUIJumpPreference;
+-
+     if-eqz v0, :cond_56
+-
+-    iget-object v1, p0, Lcom/oplus/consumerIRApp/navigation/fragment/BaseSettingsFragment;->c:Landroid/app/Activity;
+-
+-    invoke-static {v1}, Lg8/c;->d(Landroid/content/Context;)Ljava/lang/String;
+-
+-    move-result-object v1
+-
+-    invoke-virtual {v0, v1}, Landroidx/preference/Preference;->setTitle(Ljava/lang/CharSequence;)V
+-
+-    new-instance v1, Lcom/oplus/consumerIRApp/navigation/fragment/SettingFragment$c;
+-
+-    invoke-direct {v1, p0}, Lcom/oplus/consumerIRApp/navigation/fragment/SettingFragment$c;-><init>(Lcom/oplus/consumerIRApp/navigation/fragment/SettingFragment;)V
+-
+-    invoke-virtual {v0, v1}, Landroidx/preference/Preference;->setOnPreferenceClickListener(Landroidx/preference/Preference$OnPreferenceClickListener;)V
++    const/4 v1, 0x0
++    invoke-virtual {v0, v1}, Landroidx/preference/Preference;->setVisible(Z)V
+ 
+     :cond_56
+     const-string v0, "privacy_policy_collect_title"

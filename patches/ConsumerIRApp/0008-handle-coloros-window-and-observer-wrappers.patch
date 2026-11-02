@@ -1,0 +1,124 @@
+--- a/classes/com/coui/appcompat/panel/COUIBottomSheetDialog.smali
++++ b/classes/com/coui/appcompat/panel/COUIBottomSheetDialog.smali
+@@ -1844,33 +1844,7 @@
+ .end method
+ 
+ .method private addOSDKViewTreeObserver()V
+-    .registers 3
+-
+-    iget-object v0, p0, Lcom/coui/appcompat/panel/COUIBottomSheetDialog;->mOSDKViewTreeObserver:Lcom/oplus/wrapper/view/ViewTreeObserver;
+-
+-    if-nez v0, :cond_1a
+-
+-    iget-object v0, p0, Lcom/coui/appcompat/panel/COUIBottomSheetDialog;->mOutsideView:Landroid/view/View;
+-
+-    if-eqz v0, :cond_1a
+-
+-    new-instance v0, Lcom/oplus/wrapper/view/ViewTreeObserver;
+-
+-    iget-object v1, p0, Lcom/coui/appcompat/panel/COUIBottomSheetDialog;->mOutsideView:Landroid/view/View;
+-
+-    invoke-virtual {v1}, Landroid/view/View;->getViewTreeObserver()Landroid/view/ViewTreeObserver;
+-
+-    move-result-object v1
+-
+-    invoke-direct {v0, v1}, Lcom/oplus/wrapper/view/ViewTreeObserver;-><init>(Landroid/view/ViewTreeObserver;)V
+-
+-    iput-object v0, p0, Lcom/coui/appcompat/panel/COUIBottomSheetDialog;->mOSDKViewTreeObserver:Lcom/oplus/wrapper/view/ViewTreeObserver;
+-
+-    iget-object p0, p0, Lcom/coui/appcompat/panel/COUIBottomSheetDialog;->mOSDKComputeListener:Lcom/oplus/wrapper/view/ViewTreeObserver$OnComputeInternalInsetsListener;
+-
+-    invoke-virtual {v0, p0}, Lcom/oplus/wrapper/view/ViewTreeObserver;->addOnComputeInternalInsetsListener(Lcom/oplus/wrapper/view/ViewTreeObserver$OnComputeInternalInsetsListener;)V
+-
+-    :cond_1a
++    .locals 0
+     return-void
+ .end method
+ 
+@@ -2061,27 +2035,10 @@
+ 
+     move-result-object v1
+ 
+-    const-class v2, Landroid/view/OplusBaseLayoutParams;
+-
+-    invoke-static {v2, v1}, Lcom/oplus/util/OplusTypeCastingHelper;->typeCasting(Ljava/lang/Class;Ljava/lang/Object;)Ljava/lang/Object;
+-
+-    move-result-object v2
+-
+-    check-cast v2, Landroid/view/OplusBaseLayoutParams;
+-
+-    if-eqz v2, :cond_25
+-
+-    iget v3, v2, Landroid/view/OplusBaseLayoutParams;->oplusFlags:I
+-
+-    const v4, 0x8000
+-
+-    or-int/2addr v3, v4
+-
+-    iput v3, v2, Landroid/view/OplusBaseLayoutParams;->oplusFlags:I
+-
+-    invoke-virtual {v0, v1}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
+-
+-    :cond_25
++    # AOSP: android.view.OplusBaseLayoutParams is a ColorOS-only window flag
++    # container. The class does not exist here and the constant pool
++    # reference alone throws, so this OEM flag update is skipped. The
++    # standard window flags in this method still run.
+     const/high16 v1, -0x80000000
+ 
+     invoke-virtual {v0, v1}, Landroid/view/Window;->addFlags(I)V
+@@ -4767,27 +4724,10 @@
+ 
+     move-result-object v0
+ 
+-    const-class v1, Landroid/view/OplusBaseLayoutParams;
+-
+-    invoke-static {v1, v0}, Lcom/oplus/util/OplusTypeCastingHelper;->typeCasting(Ljava/lang/Class;Ljava/lang/Object;)Ljava/lang/Object;
+-
+-    move-result-object v1
+-
+-    check-cast v1, Landroid/view/OplusBaseLayoutParams;
+-
+-    if-eqz v1, :cond_25
+-
+-    iget v2, v1, Landroid/view/OplusBaseLayoutParams;->oplusFlags:I
+-
+-    const v3, -0x8001
+-
+-    and-int/2addr v2, v3
+-
+-    iput v2, v1, Landroid/view/OplusBaseLayoutParams;->oplusFlags:I
+-
+-    invoke-virtual {p0, v0}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
+-
+-    :cond_25
++    # AOSP: android.view.OplusBaseLayoutParams is a ColorOS-only window flag
++    # container. The class does not exist here and the constant pool
++    # reference alone throws, so this OEM flag update is skipped. The
++    # standard window flags in this method still run.
+     return-void
+ .end method
+ 
+@@ -12015,21 +11955,7 @@
+ .end method
+ 
+ .method private removeOSDKViewTreeObserver()V
+-    .registers 3
+-
+-    iget-object v0, p0, Lcom/coui/appcompat/panel/COUIBottomSheetDialog;->mOSDKViewTreeObserver:Lcom/oplus/wrapper/view/ViewTreeObserver;
+-
+-    if-eqz v0, :cond_c
+-
+-    iget-object v1, p0, Lcom/coui/appcompat/panel/COUIBottomSheetDialog;->mOSDKComputeListener:Lcom/oplus/wrapper/view/ViewTreeObserver$OnComputeInternalInsetsListener;
+-
+-    invoke-virtual {v0, v1}, Lcom/oplus/wrapper/view/ViewTreeObserver;->removeOnComputeInternalInsetsListener(Lcom/oplus/wrapper/view/ViewTreeObserver$OnComputeInternalInsetsListener;)V
+-
+-    const/4 v0, 0x0
+-
+-    iput-object v0, p0, Lcom/coui/appcompat/panel/COUIBottomSheetDialog;->mOSDKViewTreeObserver:Lcom/oplus/wrapper/view/ViewTreeObserver;
+-
+-    :cond_c
++    .locals 0
+     return-void
+ .end method
+ 
