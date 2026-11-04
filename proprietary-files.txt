@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# source:destination;EXTRACT_ONLY|stock SHA-1|fixed-up unsigned SHA-1
+# JNI-bearing apps use build/apps-prebuilt.mk rather than duplicate Soong imports.
+
+# Apps - Extracted from Sony Xperia XQ-GE44 Customized JP 73.1.A.2.74
+product/deletable-app/SemcMusicApp/SemcMusicApp.apk:product/app/SemcMusicApp/SemcMusicApp.apk;EXTRACT_ONLY|f80552051ae44707bd2b00c764a4a1bf5e3f7f5b|773f3d9ac6542c8dff3c54872f0a61ba796063df

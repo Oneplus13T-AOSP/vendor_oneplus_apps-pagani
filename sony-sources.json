@@ -1,0 +1,73 @@
+{
+  "SemcMusicApp": {
+    "dump_path": "product/deletable-app/SemcMusicApp/SemcMusicApp.apk",
+    "destination": "product/app/SemcMusicApp/SemcMusicApp.apk",
+    "manufacturer": "sony",
+    "package": "com.sonyericsson.music",
+    "version_code": 19537931,
+    "version_name": "9.4.17.A.0.11",
+    "min_sdk": 30,
+    "sha256": "352c04ed4056b6e3664707c8dcae16f1d870357360f2a714b498ce1e64b8e3c4",
+    "stock_dex": [
+      "classes.dex",
+      "classes2.dex"
+    ],
+    "patched_dex": [
+      "classes2.dex"
+    ],
+    "smali_sha256": {
+      "classes2/com/sonyericsson/music/common/ApiAvailabilityManager.smali": "b883c86868477dc2739ff443f8a2b57437a1f3e8a0a08907609320fce36b27fe",
+      "classes2/com/sonyericsson/music/common/MediaRouterUtils.smali": "bfe31c7203298a687b11d8a1119c311aab813555d606fddab2524fa04c86d64c",
+      "classes2/com/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompat.smali": "beb7eaddba7c55682bbbcc75d52da9e6f79f2752004f454cc0239a53178e96c0"
+    },
+    "optional_uses_libs": [
+      "org.apache.http.legacy",
+      "androidx.window.extensions",
+      "androidx.window.sidecar",
+      "android.ext.adservices"
+    ],
+    "jni": [
+      "libandroidx.graphics.path.so",
+      "libdatastore_shared_counter.so"
+    ],
+    "compat_sources": [],
+    "compat_descriptors": [],
+    "manifest_remove_uses_libraries": [
+      "com.sony.device",
+      "com.sonymobile.audioeffect",
+      "com.sonymobile.settings.illumination.api",
+      "com.sonyericsson.idd",
+      "com.sonyericsson.dlna.api",
+      "com.sonyericsson.dlna.api_2",
+      "com.sonyericsson.dlna.api_3",
+      "com.sonyericsson.dlna.api_4",
+      "com.sonyericsson.dlna.api_5",
+      "com.sonyericsson.dlna.api_6",
+      "com.sonymobile.playanywhere.api",
+      "com.sonymobile.playanywhere.api_2",
+      "com.sonymobile.playanywhere.api_3",
+      "com.sonymobile.playanywhere.api_4"
+    ],
+    "manifest_remove_services": [
+      "com.sonymobile.somcmediarouter.provider.dlna.DlnaMediaRouteProviderService"
+    ],
+    "store_dex": true,
+    "preserved_smali_sha256": {
+      "com/sonyericsson/music/SettingsFragment.smali": "e91b84309901bec4ddf0a2bb111187f5d04760c6439aa330be9848fd5ce42a8c",
+      "com/sonyericsson/music/playerservice/localplayer/LocalPlayer.smali": "75a1b425889a9c9b35f501d836c6b4b59af564fd894ea2e9ac599c9bf03624fa",
+      "com/sonyericsson/music/playerservice/localplayer/LocalPlayer$AudioEffectsControl.smali": "1e8274140b770f62a6271be7f8c150b540275524cafdac1115a9d247afa5ceaf"
+    },
+    "patched_method_signatures": {
+      "com/sonyericsson/music/common/ApiAvailabilityManager.smali": [
+        "public static isApiAvailable(Lcom/sonyericsson/music/common/ApiAvailabilityManager$Api;)Z"
+      ],
+      "com/sonyericsson/music/common/MediaRouterUtils.smali": [
+        "private static isDlnaSupported(Landroid/content/Context;)Z"
+      ],
+      "com/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompat.smali": [
+        "public static getFactory(Landroid/content/Context;)Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompat$Factory;",
+        "public static getFactory(Landroid/content/Context;I)Lcom/sonymobile/somcmediarouter/provider/playerservice/PlayerServiceCompat$Factory;"
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+# Ignore every APK regardless of size or location.
+*.apk
+*.[aA][pP][kK]
+# Stock/generated native payloads and build records.
+/proprietary/
+/.work/
+__pycache__/
+*.py[cod]

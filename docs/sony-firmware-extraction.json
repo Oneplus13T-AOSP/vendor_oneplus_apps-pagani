@@ -1,0 +1,22 @@
+{
+  "source": "XQ-GE44_Customized_JP_73.1.A.2.74",
+  "destination": "dumpyara/working/XQ-GE44_Customized_JP_73.1.A.2.74",
+  "dumpyara_sha256": "147b857d791b4e1b81a47230f14ec0b3b4b56460f284ec687db3bad7d90f9b5a",
+  "method": "dumpyara partition extraction sequence; normalize _a names; no network or image deletion",
+  "partitions": {
+    "product": {
+      "source_image": "product_a.img",
+      "bytes": 4053483520,
+      "sha256": "af4a9b8280cfbd95eeb4dede1607139150697b0d4b176a0d9bf40f04ee2f98fb",
+      "files": 920
+    }
+  },
+  "selected_partitions": [
+    "product"
+  ],
+  "discarded_unneeded_partitions": [
+    "system",
+    "system_ext"
+  ],
+  "system_as_root_normalized": false
+}
