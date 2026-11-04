@@ -18,8 +18,9 @@ Usage:
       --rom-root /path/to/android/source \
       --apk app.apk [--apk another.apk ...]
 
-Add --selftest to prove the checker itself fails when a required overload is
-removed, has its argument types changed, or loses a constructor.
+Add --selftest to check all supplied APKs against four compilable mutations.
+Each mutation must produce an exact descriptor mismatch; a compile error is
+a selftest failure rather than evidence that descriptor comparison worked.
 """
 from pathlib import Path
 import argparse
@@ -202,12 +203,12 @@ def compare(rom, fwk_src, apks, owned):
     return missing, checked
 
 
-def selftest(rom, fwk_src, apk):
-    """Negative tests: removing/changing a required member must be detected.
+def selftest(rom, fwk_src, apks):
+    """Reject compilable API changes using the complete, order-independent input.
 
-    Each case gets a fresh copy of the sources, because some mutations would
-    otherwise collide with an earlier one (for example turning the RenderNode
-    overload into a duplicate View overload does not compile).
+    The fixtures target Gallery/Camera signatures. Report an input prerequisite
+    error when none of the supplied APKs references a fixture, rather than
+    falsely blaming the checker for accepting an unused API change.
     """
     canvas_rel = Path('com/oplus/graphics/OplusCanvas.java')
     utils_rel = Path('com/oplus/animation/OplusAsyncAnimatorUtils.java')
@@ -224,14 +225,11 @@ def selftest(rom, fwk_src, apk):
     def change_argument_type(root):
         target = root / utils_rel
         text = target.read_text()
-        # Drop the View overload first so the replacement does not duplicate it,
-        # then retype the RenderNode one. The APK still asks for
-        # setAlpha(RenderNode,float), which is now gone.
-        text = re.sub(
-            r'\n\s*public static boolean setAlpha\(View view, float alpha\) \{.*?\n    \}\n',
-            '\n', text, flags=re.S)
+        assert 'setAlpha(RenderNode node, float alpha)' in text
+        # Keep both overloads and a valid body, changing only the ABI argument.
         text = text.replace('setAlpha(RenderNode node, float alpha)',
-                            'setAlpha(Object node, float alpha)')
+                            'setAlpha(RenderNode node, double alpha)')
+        text = text.replace('node.setAlpha(alpha);', 'node.setAlpha((float) alpha);')
         target.write_text(text)
 
     def change_return_type(root):
@@ -240,7 +238,7 @@ def selftest(rom, fwk_src, apk):
         assert 'public static boolean setOutlineRoundRect(' in text
         target.write_text(text.replace(
             'public static boolean setOutlineRoundRect(View view, Rect rect, float radius,\n            float weight)',
-            'public static void setOutlineRoundRect(View view, Rect rect, float radius,\n            float weight)'))
+            'public static Boolean setOutlineRoundRect(View view, Rect rect, float radius,\n            float weight)'))
 
     def drop_constructor(root):
         target = root / canvas_rel
@@ -248,31 +246,57 @@ def selftest(rom, fwk_src, apk):
         stripped = re.sub(r'\n\s*public OplusCanvas\(Canvas canvas\) \{.*?\n    \}\n',
                           '\n', text, flags=re.S)
         assert stripped != text, 'selftest: OplusCanvas constructor not found'
-        target.write_text(stripped)
+        # The final Canvas field still needs initialization. A no-arg constructor
+        # compiles but does not satisfy the APK's required (Canvas)V descriptor.
+        target.write_text(stripped.replace('private final Canvas mCanvas;',
+            'private final Canvas mCanvas;\n'
+            '    public OplusCanvas() { this.mCanvas = null; }'))
 
+    utils = 'Lcom/oplus/animation/OplusAsyncAnimatorUtils;'
+    render_alpha = (utils, ('setAlpha', '(Landroid/graphics/RenderNode;F)Z'))
+    canvas_ctor = ('Lcom/oplus/graphics/OplusCanvas;',
+                   ('<init>', '(Landroid/graphics/Canvas;)V'))
+    outline = (utils, ('setOutlineRoundRect',
+                      '(Landroid/view/View;Landroid/graphics/Rect;FF)Z'))
     cases = [
-        ('removed overload', drop_render_node_overload),
-        ('changed argument type', change_argument_type),
-        ('changed return type', change_return_type),
-        ('removed constructor', drop_constructor),
+        ('removed overload', drop_render_node_overload, render_alpha),
+        ('changed argument type', change_argument_type, render_alpha),
+        ('changed return type', change_return_type, outline),
+        ('removed constructor', drop_constructor, canvas_ctor),
     ]
 
+    required = {(cls, member)
+                for apk in apks
+                for cls, members in referenced_members(apk).items()
+                for member in members}
+    absent = [label for label, _mutate, fixture in cases if fixture not in required]
+    if absent:
+        print('SELFTEST INPUT ERROR: supplied APKs do not exercise: ' + ', '.join(absent))
+        print('Include OppoGallery2.apk and its referenced OplusCanvas constructor.')
+        return False
+
+    baseline_missing, _checked = compare(rom, fwk_src, apks, OWNED)
+    if baseline_missing:
+        print('SELFTEST FAIL: unmodified sources already have missing signatures')
+        return False
+
     ok = True
-    for label, mutate in cases:
+    for label, mutate, (owner, (name, descriptor)) in cases:
         with tempfile.TemporaryDirectory(prefix='fwk-api-selftest-') as tmp:
             root = Path(tmp) / 'src'
             shutil.copytree(fwk_src, root)
             mutate(root)
             try:
-                missing, _checked = compare(rom, root, [apk], OWNED)
+                missing, _checked = compare(rom, root, apks, OWNED)
             except subprocess.CalledProcessError:
-                # A mutation that will not compile is still a detected change.
-                print('selftest ok: %s -> compile error' % label)
+                print('SELFTEST FAIL: %s did not compile' % label)
+                ok = False
                 continue
-            if missing:
+            if any(cls == owner and member == name + descriptor
+                   for _apk, cls, member in missing):
                 print('selftest ok: %s -> %d missing' % (label, len(missing)))
             else:
-                print('SELFTEST FAIL: %s was not detected' % label)
+                print('SELFTEST FAIL: %s did not report the expected signature' % label)
                 ok = False
     return ok
 
@@ -292,7 +316,7 @@ def main():
         parser.error('missing oplus-fwk sources: %s' % fwk_src)
 
     if args.selftest:
-        if not selftest(args.rom_root, fwk_src, args.apk[0]):
+        if not selftest(args.rom_root, fwk_src, args.apk):
             print('FAIL: checker selftest did not detect a regression')
             return 1
         print('PASS: checker selftest detected every injected regression')

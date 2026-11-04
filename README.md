@@ -140,6 +140,10 @@ SELinux 정책, priv-app 허용 목록은 추가하지 않는다.
 `getFrameNumber`, `setMetaBallChain(View,Set)`도 포함했다.
 `tests/check-fwk-api.py`로 이 13개 클래스에 대한 APK별 참조 멤버를 다시 대조할 수 있다
 (현재 169개 참조 전부 해석됨).
+`--selftest`는 전달한 APK 전체를 사용하므로 입력 순서에 의존하지 않는다.
+갤러리를 포함해야 네 가지 변이의 대상 시그니처를 모두 검사할 수 있다. 각 변이는
+컴파일에 성공한 뒤 예상한 descriptor 누락으로 검출되어야 하며, 컴파일 오류를
+시그니처 검사 성공으로 취급하지 않는다.
 
 - `com.oplus.graphics.OplusCanvas`: AOSP `Canvas.drawRoundRect`로 같은 도형을 그린다.
   부드러운 모서리 연속성만 빠진다.
@@ -153,11 +157,11 @@ SELinux 정책, priv-app 허용 목록은 추가하지 않는다.
   `resetOutlineToNone()`이 `setOutlineProvider(null)` + `setClipToOutline(false)`만
   하므로, `setClipBounds`를 쓰면 전환 후 사진이 잘린 채 남는다. 전달된 radius는
   `Outline.setRoundRect`에 반영하고, smoothing weight는 AOSP 대응이 없어 무시한다.
-- `com.oplus.view.OplusRenderNodeAnimator`: `createRtAnimator`와
-  `createRenderValueAnimator`는 null을 반환하고 `getFrameNumber`는 -1을 반환한다.
-  COUI/Gallery 호출부가 결과를 null 검사한 뒤 cancel()/isRunning()을 호출하므로
-  기존 속성 애니메이션 폴백으로 동작한다. 다만 null 검사만으로 애니메이션 완료
-  콜백/상태 복구가 보장되지는 않으므로 실기기 확인이 필요하다.
+- `com.oplus.view.OplusRenderNodeAnimator`: `createRtAnimator`는 null,
+  `getFrameNumber`는 -1을 반환한다. `createRenderValueAnimator`는 호출자가 설정한
+  duration·interpolator·listener를 유지하도록 전달된 Animator를 그대로 반환한다.
+  null을 검사하는 COUI 경로와 원본 Animator를 실행하는 Gallery 경로를 구분하며,
+  실제 애니메이션 완료와 상태 복구는 실기기 확인이 필요하다.
 - `com.oplus.util.OplusLog`, `com.oplus.util.OplusDarkModeUtil`,
   `com.oplus.view.OplusWindowAttributesManager`: AOSP 동등 구현.
   `com.oplus.util.OplusTypeCastingHelper`는 `framework.jar`에 이미 동일 구현이 있어
